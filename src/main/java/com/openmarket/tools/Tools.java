@@ -71,6 +71,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
+import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.node.ObjectNode;
@@ -1106,15 +1107,19 @@ public class Tools {
 			if (result.contains("not installed.") || result.contains("command not found")) {
 				return false;
 			} else {
-				String goVersion = result.split("\\s+")[2];
-				Double goMajorVersion = Double.parseDouble(goVersion.substring(2,5));
+				String goVersion = result.split("\\s+")[2].substring(2);
 
 				log.info("go version = " + goVersion);
+				
+				DefaultArtifactVersion minVersion = new DefaultArtifactVersion("1.4");
 
-				if (goMajorVersion >= 1.4) {
+				DefaultArtifactVersion version = new DefaultArtifactVersion(goVersion);
+
+				if (!(version.compareTo(minVersion) == -1)) {
 					log.info("Go is correctly installed");
 					return true;
 				}
+				
 			}
 
 		} catch (IOException e) {

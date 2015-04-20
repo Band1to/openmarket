@@ -128,7 +128,11 @@
 	</build>
 	<dependencies>
 
-
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-artifact</artifactId>
+			<version>3.0.3</version>
+		</dependency>
 		<dependency>
 			<groupId>com.github.tchoulihan</groupId>
 			<artifactId>bitmerchant</artifactId>
