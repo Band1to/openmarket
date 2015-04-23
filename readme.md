@@ -93,5 +93,5 @@ Start with getting familiar with the [schema](http://ondras.zarovi.cz/sql/demo/?
 * Special thanks to Mike Hearn and Andreas Schildbach for their assistance with BIP70 and refunding orders.
 
 ## Feature requests / todos
-* 
+* Work out some reliability issues with nodes going down in raft 
 
